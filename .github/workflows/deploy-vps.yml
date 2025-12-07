@@ -1,158 +1,158 @@
-name: Deploy to VPS
+# name: Deploy to VPS
 
-on:
-  push:
-    branches: [main]
-    paths:
-      - 'en/**'
-      - 'cn/**'
-      - 'es/**'
-      - 'ge/**'
-      - 'ja/**'
-  workflow_dispatch:
+# on:
+#   push:
+#     branches: [main]
+#     paths:
+#       - 'en/**'
+#       - 'cn/**'
+#       - 'es/**'
+#       - 'ge/**'
+#       - 'ja/**'
+#   workflow_dispatch:
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
+#     steps:
+#       - uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '20'
 
-      - name: Build all projects
-        run: |
-          for lang in en cn es ge ja; do
-            if [ -d "$lang" ]; then
-              echo "Building $lang..."
-              cd $lang
-              npm ci
-              npm run build
-              cd ..
-            fi
-          done
+#       - name: Build all projects
+#         run: |
+#           for lang in en cn es ge ja; do
+#             if [ -d "$lang" ]; then
+#               echo "Building $lang..."
+#               cd $lang
+#               npm ci
+#               npm run build
+#               cd ..
+#             fi
+#           done
 
-      - name: Package production files only
-        run: |
-          mkdir -p deploy_package
+#       - name: Package production files only
+#         run: |
+#           mkdir -p deploy_package
 
-          for lang in en cn es ge ja; do
-            if [ -d "$lang/.next" ]; then
-              echo "Packaging $lang production files..."
-              mkdir -p deploy_package/$lang
-              
-              # Copy only production files
-              cp -r $lang/.next deploy_package/$lang/
-              cp -r $lang/public deploy_package/$lang/ 2>/dev/null || true
-              cp $lang/package.json deploy_package/$lang/
-              cp $lang/package-lock.json deploy_package/$lang/ 2>/dev/null || true
-              cp $lang/next.config.* deploy_package/$lang/ 2>/dev/null || true
-              cp $lang/.env.production* deploy_package/$lang/ 2>/dev/null || true
-              
-              # Create tarball
-              cd deploy_package
-              tar -czf ${lang}.tar.gz $lang/
-              rm -rf $lang/
-              cd ..
-            fi
-          done
+#           for lang in en cn es ge ja; do
+#             if [ -d "$lang/.next" ]; then
+#               echo "Packaging $lang production files..."
+#               mkdir -p deploy_package/$lang
 
-          # Copy PM2 config only
-          cp ecosystem.config.js deploy_package/ 2>/dev/null || true
+#               # Copy only production files
+#               cp -r $lang/.next deploy_package/$lang/
+#               cp -r $lang/public deploy_package/$lang/ 2>/dev/null || true
+#               cp $lang/package.json deploy_package/$lang/
+#               cp $lang/package-lock.json deploy_package/$lang/ 2>/dev/null || true
+#               cp $lang/next.config.* deploy_package/$lang/ 2>/dev/null || true
+#               cp $lang/.env.production* deploy_package/$lang/ 2>/dev/null || true
 
-          # Create final package
-          tar -czf deployment.tar.gz deploy_package/
-          echo "Deployment size: $(du -h deployment.tar.gz | cut -f1)"
+#               # Create tarball
+#               cd deploy_package
+#               tar -czf ${lang}.tar.gz $lang/
+#               rm -rf $lang/
+#               cd ..
+#             fi
+#           done
 
-      - name: Deploy to VPS
-        uses: appleboy/scp-action@v0.1.5
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-          source: 'deployment.tar.gz'
-          target: '/tmp/'
+#           # Copy PM2 config only
+#           cp ecosystem.config.js deploy_package/ 2>/dev/null || true
 
-      - name: Execute deployment on VPS
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-          script: |
-            set -e
+#           # Create final package
+#           tar -czf deployment.tar.gz deploy_package/
+#           echo "Deployment size: $(du -h deployment.tar.gz | cut -f1)"
 
-            # Extract deployment
-            cd /tmp
-            tar -xzf deployment.tar.gz
-            cd deploy_package
+#       - name: Deploy to VPS
+#         uses: appleboy/scp-action@v0.1.5
+#         with:
+#           host: ${{ secrets.VPS_HOST }}
+#           username: ${{ secrets.VPS_USER }}
+#           key: ${{ secrets.VPS_SSH_KEY }}
+#           port: ${{ secrets.VPS_PORT }}
+#           source: 'deployment.tar.gz'
+#           target: '/tmp/'
 
-            # Ensure pm2 is available (handle nvm/non-login shells)
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-            if command -v nvm >/dev/null 2>&1; then
-              nvm use --silent 20 || true
-            fi
-            export PATH="$HOME/.npm-global/bin:$PATH"
-            if ! command -v pm2 >/dev/null 2>&1; then
-              npm config set prefix "$HOME/.npm-global" >/dev/null 2>&1 || true
-              npm i -g pm2 --silent || sudo npm i -g pm2 --silent || true
-            fi
+#       - name: Execute deployment on VPS
+#         uses: appleboy/ssh-action@v1.0.0
+#         with:
+#           host: ${{ secrets.VPS_HOST }}
+#           username: ${{ secrets.VPS_USER }}
+#           key: ${{ secrets.VPS_SSH_KEY }}
+#           port: ${{ secrets.VPS_PORT }}
+#           script: |
+#             set -e
 
-            # Track changed apps for selective reload later
-            changed_apps=""
+#             # Extract deployment
+#             cd /tmp
+#             tar -xzf deployment.tar.gz
+#             cd deploy_package
 
-            # Backup current deployment (optional)
-            if [ -d "/var/www/cursorhistory" ]; then
-              sudo mv /var/www/cursorhistory /var/www/cursorhistory.backup.$(date +%Y%m%d_%H%M%S)
-            fi
+#             # Ensure pm2 is available (handle nvm/non-login shells)
+#             export NVM_DIR="$HOME/.nvm"
+#             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+#             if command -v nvm >/dev/null 2>&1; then
+#               nvm use --silent 20 || true
+#             fi
+#             export PATH="$HOME/.npm-global/bin:$PATH"
+#             if ! command -v pm2 >/dev/null 2>&1; then
+#               npm config set prefix "$HOME/.npm-global" >/dev/null 2>&1 || true
+#               npm i -g pm2 --silent || sudo npm i -g pm2 --silent || true
+#             fi
 
-            # Create fresh directory
-            sudo mkdir -p /var/www/cursorhistory
+#             # Track changed apps for selective reload later
+#             changed_apps=""
 
-            # Deploy each language
-            for lang in en cn es ge ja; do
-              if [ -f "${lang}.tar.gz" ]; then
-                echo "Deploying $lang..."
-                sudo tar -xzf ${lang}.tar.gz -C /var/www/cursorhistory/
-                
-                # Install production dependencies only
-                cd /var/www/cursorhistory/${lang}
-                npm ci --omit=dev
-                cd -
-                # Record app name for selective pm2 reload
-                changed_apps="${changed_apps},cursorhistory-${lang}"
-              fi
-            done
+#             # Backup current deployment (optional)
+#             if [ -d "/var/www/cursorhistory" ]; then
+#               sudo mv /var/www/cursorhistory /var/www/cursorhistory.backup.$(date +%Y%m%d_%H%M%S)
+#             fi
 
-            # Copy PM2 config only (don't modify nginx)
-            if [ -f "ecosystem.config.js" ]; then
-              sudo cp ecosystem.config.js /var/www/cursorhistory/
-            fi
+#             # Create fresh directory
+#             sudo mkdir -p /var/www/cursorhistory
 
-            # Set permissions
-            sudo chown -R $USER:$USER /var/www/cursorhistory
+#             # Deploy each language
+#             for lang in en cn es ge ja; do
+#               if [ -f "${lang}.tar.gz" ]; then
+#                 echo "Deploying $lang..."
+#                 sudo tar -xzf ${lang}.tar.gz -C /var/www/cursorhistory/
 
-            # Start or reload only changed apps with PM2
-            cd /var/www/cursorhistory
-            apps_to_reload="${changed_apps#,}"
-            if [ -n "$apps_to_reload" ]; then
-              pm2 reload ecosystem.config.js --only "$apps_to_reload" || pm2 start ecosystem.config.js --only "$apps_to_reload"
-            else
-              echo "No apps changed. Skipping PM2 reload."
-            fi
-            pm2 save
+#                 # Install production dependencies only
+#                 cd /var/www/cursorhistory/${lang}
+#                 npm ci --omit=dev
+#                 cd -
+#                 # Record app name for selective pm2 reload
+#                 changed_apps="${changed_apps},cursorhistory-${lang}"
+#               fi
+#             done
 
-            # Cleanup
-            rm -rf /tmp/deployment.tar.gz /tmp/deploy_package
+#             # Copy PM2 config only (don't modify nginx)
+#             if [ -f "ecosystem.config.js" ]; then
+#               sudo cp ecosystem.config.js /var/www/cursorhistory/
+#             fi
 
-            # Remove old backups (keep last 3)
-            ls -dt /var/www/cursorhistory.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || true
+#             # Set permissions
+#             sudo chown -R $USER:$USER /var/www/cursorhistory
 
-            echo "✅ Deployment completed!"
-            pm2 status
+#             # Start or reload only changed apps with PM2
+#             cd /var/www/cursorhistory
+#             apps_to_reload="${changed_apps#,}"
+#             if [ -n "$apps_to_reload" ]; then
+#               pm2 reload ecosystem.config.js --only "$apps_to_reload" || pm2 start ecosystem.config.js --only "$apps_to_reload"
+#             else
+#               echo "No apps changed. Skipping PM2 reload."
+#             fi
+#             pm2 save
+
+#             # Cleanup
+#             rm -rf /tmp/deployment.tar.gz /tmp/deploy_package
+
+#             # Remove old backups (keep last 3)
+#             ls -dt /var/www/cursorhistory.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || true
+
+#             echo "✅ Deployment completed!"
+#             pm2 status
