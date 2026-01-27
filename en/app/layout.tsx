@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import './globals.css';
-// import { AAdsAdvertisement } from './components/Advertisements'
-// import { FloatingAdsContainer } from './components/Advertisements'
+import { TopBannerAd, TopBannerSpacer, SidebarAd } from './components/Advertisements'
 import Script from 'next/script';
 import { siteConfig } from "../config/site";
 
@@ -96,60 +95,18 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={inter.className}>
+        {/* 固定顶部横幅广告 */}
+        <TopBannerAd />
         <div className="flex min-h-screen flex-col">
-          {/* <FloatingAdsContainer /> */}
+          {/* 横幅占位符 */}
+          <TopBannerSpacer />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
 
-        {/* 固定侧边栏广告 - 直接HTML实现 */}
-        {/* <div
-          className="hidden lg:block fixed top-1/2 right-0 transform -translate-y-1/2 z-30"
-        >
-          <ins className="adsbygoogle"
-            style={{ display: 'block', width: '180px', height: '250px' }}
-            data-ad-client="ca-pub-4633597437741439"
-            data-ad-slot="7291292882"
-            data-ad-format="auto"
-            data-full-width-responsive="true">
-          </ins>
-        </div>
-
-        <Script id="sidebar-adsense" strategy="afterInteractive">
-          {`
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          `}
-        </Script> */}
-
-        {/* 左侧广告位招租 - 方案一：简洁文本版 */}
-        {/* <div className="hidden lg:block fixed left-0 top-1/2 transform -translate-y-1/2 z-30">
-          <div
-            className="w-[180px] h-[250px] bg-white border-2 border-gray-300 p-4 flex flex-col justify-center items-center text-center shadow-sm"
-          >
-            <div className="mb-4">
-              <h3 className="text-sm font-semibold text-gray-800 mb-2">Ad Space Available</h3>
-              <p className="text-xs text-gray-600 mb-3">Business Cooperation</p>
-            </div>
-            <div className="mb-4">
-              <svg className="w-8 h-8 text-gray-400 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-              </svg>
-              <a
-                href="mailto:cursor@cursorhistory.com"
-                className="text-xs text-blue-600 hover:text-blue-800 break-words"
-              >
-                cursor@cursorhistory.com
-              </a>
-            </div>
-            <p className="text-xs text-gray-500 leading-tight">
-              Contact us for advertising opportunities
-            </p>
-          </div>
-        </div> */}
-
-
+        {/* 侧边栏广告 */}
+        <SidebarAd />
       </body>
     </html>
   )

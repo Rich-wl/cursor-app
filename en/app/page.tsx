@@ -75,31 +75,28 @@ export default function Home() {
           __html: JSON.stringify(structuredData),
         }}
       />
-      
-      {/* 左侧广告容器 - 仅首页显示 */}
+
+      {/* ========== 原左侧广告容器（已由全局 SidebarAd 替代） ==========
       <div className="hidden lg:block fixed left-0 top-1/2 transform -translate-y-1/2 z-50">
         <div className="flex flex-col space-y-4">
-          {/* Hostinger广告 */}
           <div className="ml-2">
             <a href="https://www.hostg.xyz/aff_c?offer_id=6&aff_id=148530&file_id=1357">
-              <img 
-                src="https://media.go2speed.org/brand/files/hostinger/6/EN-300x600.jpg" 
-                width={180} 
-                height={360} 
-                alt="Hostinger" 
+              <img
+                src="https://media.go2speed.org/brand/files/hostinger/6/EN-300x600.jpg"
+                width={180}
+                height={360}
+                alt="Hostinger"
                 className="w-[180px] h-auto shadow-lg"
               />
             </a>
-            <img 
-              src="https://www.hostg.xyz/aff_i?offer_id=6&file_id=1357&aff_id=148530" 
-              width={0} 
-              height={0} 
-              style={{ position: 'absolute', visibility: 'hidden' }} 
+            <img
+              src="https://www.hostg.xyz/aff_i?offer_id=6&file_id=1357&aff_id=148530"
+              width={0}
+              height={0}
+              style={{ position: 'absolute', visibility: 'hidden' }}
               alt=""
             />
           </div>
-
-          {/* 广告位招租 */}
           <div className="ml-2">
             <div
               className="w-[180px] h-[250px] bg-gradient-to-br from-blue-50 to-indigo-100 border border-blue-200 rounded-lg p-4 flex flex-col justify-center items-center text-center shadow-lg"
@@ -129,6 +126,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      ========== 原左侧广告容器 ========== */}
       
       <main className="container mx-auto px-4 py-8">
         <Hero />
