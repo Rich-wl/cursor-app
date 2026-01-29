@@ -202,7 +202,7 @@ export function TopBannerAd() {
         <div className="flex items-center gap-2 text-white">
           <span className="font-semibold text-sm md:text-base">X-Code</span>
           <span className="hidden sm:inline text-white/80 text-sm">|</span>
-          <span className="hidden sm:inline text-white/90 text-sm">稳定高质量 Claude Code + Codex 中转站</span>
+          <span className="hidden sm:inline text-white/90 text-sm">Proxy estable de alta calidad para Claude Code + Codex</span>
         </div>
         {/* 促销标签 */}
         <span className="hidden md:inline px-2 py-0.5 bg-yellow-400 text-blue-900 rounded text-xs font-bold">
@@ -259,10 +259,10 @@ export function SidebarAd() {
           <div className="w-12 h-0.5 bg-white/30 mb-3"></div>
           {/* 描述 */}
           <p className="text-white/90 text-xs leading-relaxed mb-3">
-            稳定高质量<br />
+            Proxy estable<br />
+            de alta calidad<br />
             Claude Code<br />
-            + Codex<br />
-            中转站
+            + Codex
           </p>
           {/* 促销信息 */}
           <div className="bg-yellow-400/90 rounded px-2 py-1.5 mb-3">
