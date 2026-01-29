@@ -204,6 +204,10 @@ export function TopBannerAd() {
           <span className="hidden sm:inline text-white/80 text-sm">|</span>
           <span className="hidden sm:inline text-white/90 text-sm">稳定高质量 Claude Code + Codex 中转站</span>
         </div>
+        {/* 促销标签 */}
+        <span className="hidden md:inline px-2 py-0.5 bg-yellow-400 text-blue-900 rounded text-xs font-bold">
+          🔥 首充优惠 15%-20% 返利
+        </span>
         {/* 按钮 */}
         <span className="ml-2 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-full text-white text-xs font-medium transition-colors">
           Visit →
@@ -254,12 +258,20 @@ export function SidebarAd() {
           {/* 分隔线 */}
           <div className="w-12 h-0.5 bg-white/30 mb-3"></div>
           {/* 描述 */}
-          <p className="text-white/90 text-xs leading-relaxed mb-4">
+          <p className="text-white/90 text-xs leading-relaxed mb-3">
             稳定高质量<br />
             Claude Code<br />
             + Codex<br />
             中转站
           </p>
+          {/* 促销信息 */}
+          <div className="bg-yellow-400/90 rounded px-2 py-1.5 mb-3">
+            <p className="text-blue-900 text-xs font-bold text-center leading-relaxed">
+              🎁 首充优惠<br />
+              ¥500内返15%<br />
+              ¥500+返20%
+            </p>
+          </div>
           {/* 按钮 */}
           <span className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-white text-sm font-medium transition-colors">
             Visit →
