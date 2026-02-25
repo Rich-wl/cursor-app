@@ -268,7 +268,7 @@ export function SidebarAd() {
           <div className="bg-yellow-400/90 rounded px-2 py-1.5 mb-3">
             <p className="text-blue-900 text-xs font-bold text-center leading-relaxed">
               🎁 首充优惠<br />
-              ¥500内加15%<br />
+              ¥500内加10%<br />
               ¥500+加20%
             </p>
           </div>
