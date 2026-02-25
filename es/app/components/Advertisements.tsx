@@ -206,7 +206,7 @@ export function TopBannerAd() {
         </div>
         {/* 促销标签 */}
         <span className="hidden md:inline px-2 py-0.5 bg-yellow-400 text-blue-900 rounded text-xs font-bold">
-          🔥 Bono 15%-20% primera recarga
+          🔥 Bono 10%-20% primera recarga
         </span>
         {/* 按钮 */}
         <span className="ml-2 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-full text-white text-xs font-medium transition-colors">
@@ -268,7 +268,7 @@ export function SidebarAd() {
           <div className="bg-yellow-400/90 rounded px-2 py-1.5 mb-3">
             <p className="text-blue-900 text-xs font-bold text-center leading-relaxed">
               🎁 Primera recarga<br />
-              &lt;¥500: 15%<br />
+              &lt;¥500: 10%<br />
               ¥500+: 20%
             </p>
           </div>
