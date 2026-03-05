@@ -16,7 +16,7 @@ declare global {
 function trackAdEvent(action: 'view' | 'click', adName: string, adPosition: string) {
   if (typeof window !== 'undefined' && window.gtag) {
     // 事件名格式: {站点名}_{位置}_{动作}，如 xcode_banner_view
-    const eventName = `${adName.toLowerCase().replace('-', '')}_${adPosition}_${action}`;
+    const eventName = `${adName.toLowerCase().replace(/[-\s]/g, '')}_${adPosition}_${action}`;
     window.gtag('event', eventName, {
       ad_name: adName,
       ad_position: adPosition,
@@ -175,12 +175,12 @@ export function FloatingAdsContainer() {
 export function TopBannerAd() {
   // 追踪展示次数
   useEffect(() => {
-    trackAdEvent('view', 'X-Code', 'top_banner');
+    trackAdEvent('view', 'X-Code API', 'top_banner');
   }, []);
 
   // 追踪点击
   const handleClick = () => {
-    trackAdEvent('click', 'X-Code', 'top_banner');
+    trackAdEvent('click', 'X-Code API', 'top_banner');
   };
 
   return (
@@ -195,19 +195,15 @@ export function TopBannerAd() {
         {/* Logo */}
         <img
           src="/x-code.png"
-          alt="X-Code"
+          alt="X-Code API"
           className="h-7 w-7 object-contain rounded-md"
         />
         {/* 文案 */}
         <div className="flex items-center gap-2 text-white">
-          <span className="font-semibold text-sm md:text-base">X-Code</span>
+          <span className="font-semibold text-sm md:text-base">X-Code API</span>
           <span className="hidden sm:inline text-white/80 text-sm">|</span>
           <span className="hidden sm:inline text-white/90 text-sm">安定・高品質 Claude Code + Codex プロキシ</span>
         </div>
-        {/* 促销标签 */}
-        <span className="hidden md:inline px-2 py-0.5 bg-yellow-400 text-blue-900 rounded text-xs font-bold">
-          🔥 初回チャージ 10%-20% ボーナス
-        </span>
         {/* 按钮 */}
         <span className="ml-2 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-full text-white text-xs font-medium transition-colors">
           Visit →
@@ -228,17 +224,17 @@ export function TopBannerSpacer() {
 export function SidebarAd() {
   // 追踪展示次数
   useEffect(() => {
-    trackAdEvent('view', 'X-Code', 'sidebar');
+    trackAdEvent('view', 'X-Code API', 'sidebar');
   }, []);
 
   // 追踪点击
   const handleClick = () => {
-    trackAdEvent('click', 'X-Code', 'sidebar');
+    trackAdEvent('click', 'X-Code API', 'sidebar');
   };
 
   return (
     <div className="hidden xl:block fixed left-4 top-1/2 transform -translate-y-1/2 z-40">
-      {/* X-Code 侧边栏广告 */}
+      {/* X-Code API 侧边栏广告 */}
       <a
         href="https://x-code.cc"
         target="_blank"
@@ -250,11 +246,11 @@ export function SidebarAd() {
           {/* Logo */}
           <img
             src="/x-code.png"
-            alt="X-Code"
+            alt="X-Code API"
             className="h-16 w-16 object-contain rounded-lg mb-3"
           />
           {/* 名称 */}
-          <h3 className="text-white font-bold text-lg mb-2">X-Code</h3>
+          <h3 className="text-white font-bold text-lg mb-2">X-Code API</h3>
           {/* 分隔线 */}
           <div className="w-12 h-0.5 bg-white/30 mb-3"></div>
           {/* 描述 */}
@@ -264,14 +260,6 @@ export function SidebarAd() {
             + Codex<br />
             プロキシ
           </p>
-          {/* 促销信息 */}
-          <div className="bg-yellow-400/90 rounded px-2 py-1.5 mb-3">
-            <p className="text-blue-900 text-xs font-bold text-center leading-relaxed">
-              🎁 初回特典<br />
-              ¥500以下: 10%<br />
-              ¥500以上: 20%
-            </p>
-          </div>
           {/* 按钮 */}
           <span className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-white text-sm font-medium transition-colors">
             Visit →
