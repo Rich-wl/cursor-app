@@ -185,7 +185,7 @@ export function TopBannerAd() {
 
   return (
     <a
-      href="https://x-code.cc"
+      href="https://x-code.cc/register?aff=uxiW"
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
@@ -236,7 +236,7 @@ export function SidebarAd() {
     <div className="hidden xl:block fixed left-4 top-1/2 transform -translate-y-1/2 z-40">
       {/* X-Code API 侧边栏广告 */}
       <a
-        href="https://x-code.cc"
+        href="https://x-code.cc/register?aff=uxiW"
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
