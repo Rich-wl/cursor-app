@@ -25,6 +25,10 @@
       "linux_arm64": {
         "url": "https://downloads.cursor.com/production/dd066f332fcea7382764400fde902f61920648d5/linux/arm64/Cursor-3.19.13-aarch64.AppImage",
         "checksum": "dd066f332fcea7382764400fde902f61920648d5"
+      },
+      "mac_intel": {
+        "url": "https://downloads.cursor.com/production/dd066f332fcea7382764400fde902f61920648d5/darwin/x64/Cursor-darwin-x64.dmg",
+        "checksum": "dd066f332fcea7382764400fde902f61920648d5"
       }
     }
   },
