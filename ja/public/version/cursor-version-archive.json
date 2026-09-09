@@ -25,6 +25,10 @@
       "linux_arm64": {
         "url": "https://downloads.cursor.com/production/6496ea8a068aebfcd21990e70ff522e9abf10c8c/linux/arm64/Cursor-3.19.19-aarch64.AppImage",
         "checksum": "6496ea8a068aebfcd21990e70ff522e9abf10c8c"
+      },
+      "windows": {
+        "url": "https://downloads.cursor.com/production/6496ea8a068aebfcd21990e70ff522e9abf10c8c/win32/x64/system-setup/CursorSetup-x64-3.19.19.exe",
+        "checksum": "6496ea8a068aebfcd21990e70ff522e9abf10c8c"
       }
     }
   },
