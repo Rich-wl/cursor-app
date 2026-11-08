@@ -302,7 +302,7 @@ export function LycheeSidebarAd() {
   };
 
   return (
-    <div className="hidden xl:block fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
+    <div className="hidden xl:flex flex-col gap-3 fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
       <a
         href="https://lycheeapi.com/register?aff=9E8BMNNM&utm_source=cursorhistory&utm_medium=sidebar&utm_campaign=ja"
         target="_blank"
@@ -330,6 +330,17 @@ export function LycheeSidebarAd() {
             プランを見る →
           </span>
         </div>
+      </a>
+      {/* 广告位招租 */}
+      <a
+        href="mailto:lucasgarciaiwu404@gmail.com?subject=%E5%BA%83%E5%91%8A%E6%8E%B2%E8%BC%89"
+        onClick={() => trackAdEvent('click', 'Advertise', 'sidebar_right')}
+        className="block w-[160px] bg-white/95 border border-dashed border-gray-300 hover:border-pink-400 rounded-md shadow-md p-3 text-center transition-colors"
+      >
+        <h4 className="text-sm font-semibold text-gray-800 mb-1">広告募集中</h4>
+        <p className="text-xs text-gray-600 leading-relaxed mb-1">あなたのサービスをここに掲載しませんか？</p>
+        <p className="text-[11px] text-gray-500 mb-1">お問い合わせ：</p>
+        <p className="text-[11px] text-pink-600 font-medium break-all">lucasgarciaiwu404@gmail.com</p>
       </a>
     </div>
   )

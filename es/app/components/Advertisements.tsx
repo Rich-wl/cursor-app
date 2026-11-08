@@ -302,7 +302,7 @@ export function LycheeSidebarAd() {
   };
 
   return (
-    <div className="hidden xl:block fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
+    <div className="hidden xl:flex flex-col gap-3 fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
       <a
         href="https://lycheeapi.com/register?aff=9E8BMNNM&utm_source=cursorhistory&utm_medium=sidebar&utm_campaign=es"
         target="_blank"
@@ -330,6 +330,17 @@ export function LycheeSidebarAd() {
             Ver planes →
           </span>
         </div>
+      </a>
+      {/* 广告位招租 */}
+      <a
+        href="mailto:lucasgarciaiwu404@gmail.com?subject=Publicidad"
+        onClick={() => trackAdEvent('click', 'Advertise', 'sidebar_right')}
+        className="block w-[160px] bg-white/95 border border-dashed border-gray-300 hover:border-pink-400 rounded-md shadow-md p-3 text-center transition-colors"
+      >
+        <h4 className="text-sm font-semibold text-gray-800 mb-1">Anúnciate aquí</h4>
+        <p className="text-xs text-gray-600 leading-relaxed mb-1">¿Quieres anunciar tu producto aquí?</p>
+        <p className="text-[11px] text-gray-500 mb-1">Escríbenos a:</p>
+        <p className="text-[11px] text-pink-600 font-medium break-all">lucasgarciaiwu404@gmail.com</p>
       </a>
     </div>
   )
