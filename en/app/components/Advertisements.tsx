@@ -320,14 +320,14 @@ export function LycheeSidebarAd() {
           <div className="w-12 h-0.5 bg-white/30 mb-3"></div>
           <p className="text-white/90 text-xs leading-relaxed mb-2">
             Codex<br />
-            subscription plans
+            订阅套餐
           </p>
           <p className="text-white/80 text-xs leading-relaxed mb-3">
-            Billed monthly<br />
-            Claude · GPT pay as you go
+            月付即用<br />
+            Claude · GPT 按量付费
           </p>
           <span className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-white text-sm font-medium transition-colors">
-            See plans →
+            查看套餐 →
           </span>
         </div>
       </a>
@@ -364,10 +364,10 @@ export function LycheeTopBannerAd() {
         <div className="flex items-center gap-2 text-white">
           <span className="font-semibold text-sm md:text-base">Lychee API</span>
           <span className="hidden sm:inline text-white/80 text-sm">|</span>
-          <span className="hidden sm:inline text-white/90 text-sm">Codex subscription plans, billed monthly · Claude and GPT pay as you go</span>
+          <span className="hidden sm:inline text-white/90 text-sm">Codex 订阅套餐，月付即用 · Claude、GPT 按量付费</span>
         </div>
         <span className="ml-2 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-full text-white text-xs font-medium transition-colors">
-          See plans →
+          查看套餐 →
         </span>
       </div>
     </a>
