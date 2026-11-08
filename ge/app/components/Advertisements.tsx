@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // 为window对象添加adsbygoogle属性类型定义
 declare global {
@@ -332,16 +332,7 @@ export function LycheeSidebarAd() {
         </div>
       </a>
       {/* 广告位招租 */}
-      <a
-        href="mailto:lucasgarciaiwu404@gmail.com?subject=Werbung"
-        onClick={() => trackAdEvent('click', 'Advertise', 'sidebar_right')}
-        className="block w-[160px] bg-white/95 border border-dashed border-gray-300 hover:border-pink-400 rounded-md shadow-md p-3 text-center transition-colors"
-      >
-        <h4 className="text-sm font-semibold text-gray-800 mb-1">Werbefläche frei</h4>
-        <p className="text-xs text-gray-600 leading-relaxed mb-1">Dein Produkt hier zeigen?</p>
-        <p className="text-[11px] text-gray-500 mb-1">Schreib uns an:</p>
-        <p className="text-[11px] text-pink-600 font-medium break-all">lucasgarciaiwu404@gmail.com</p>
-      </a>
+      <AdvertiseCard />
     </div>
   )
 }
@@ -382,5 +373,58 @@ export function LycheeTopBannerAd() {
         </span>
       </div>
     </a>
+  )
+}
+
+// ============================================
+// 广告位招租卡片：邮箱可直接选中复制，也可一键复制或发邮件
+// ============================================
+const ADVERTISE_EMAIL = ['lucasgarciaiwu404', 'gmail.com'].join('@')
+
+function AdvertiseCard() {
+  const [copied, setCopied] = useState(false)
+  // 只在浏览器里渲染邮箱：服务端 HTML 不含邮箱，Cloudflare 的邮箱混淆不会改写它
+  const [email, setEmail] = useState('')
+  useEffect(() => setEmail(ADVERTISE_EMAIL), [])
+
+  const copy = async () => {
+    trackAdEvent('click', 'Advertise', 'sidebar_right_copy')
+    try {
+      await navigator.clipboard.writeText(ADVERTISE_EMAIL)
+    } catch {
+      const input = document.createElement('textarea')
+      input.value = ADVERTISE_EMAIL
+      document.body.appendChild(input)
+      input.select()
+      document.execCommand('copy')
+      input.remove()
+    }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <div className="w-[160px] bg-white/95 border border-dashed border-gray-300 rounded-md shadow-md p-3 text-center">
+      <h4 className="text-sm font-semibold text-gray-800 mb-1">Werbefläche frei</h4>
+      <p className="text-xs text-gray-600 leading-relaxed mb-1">Dein Produkt hier zeigen?</p>
+      <p className="text-[11px] text-gray-500 mb-1">Schreib uns an:</p>
+      <p className="text-[11px] text-pink-600 font-medium break-all select-all cursor-text mb-2 min-h-[1rem]">{email}</p>
+      <div className="flex justify-center gap-1.5">
+        <button
+          type="button"
+          onClick={copy}
+          className="px-2 py-1 rounded-full bg-pink-500 hover:bg-pink-600 text-white text-[11px] font-medium transition-colors"
+        >
+          {copied ? 'Kopiert ✓' : 'Kopieren'}
+        </button>
+        <a
+          href={`mailto:${ADVERTISE_EMAIL}?subject=Werbung`}
+          onClick={() => trackAdEvent('click', 'Advertise', 'sidebar_right')}
+          className="px-2 py-1 rounded-full border border-gray-300 hover:border-pink-400 text-gray-600 text-[11px] font-medium transition-colors"
+        >
+          E-Mail senden
+        </a>
+      </div>
+    </div>
   )
 }
