@@ -418,7 +418,7 @@ function AdvertiseCard() {
           {copied ? '已复制 ✓' : '复制邮箱'}
         </button>
         <a
-          href={`mailto:${ADVERTISE_EMAIL}?subject=%E5%B9%BF%E5%91%8A%E5%90%88%E4%BD%9C`}
+          href={email && `mailto:${email}?subject=%E5%B9%BF%E5%91%8A%E5%90%88%E4%BD%9C` || undefined}
           onClick={() => trackAdEvent('click', 'Advertise', 'sidebar_right')}
           className="px-2 py-1 rounded-full border border-gray-300 hover:border-pink-400 text-gray-600 text-[11px] font-medium transition-colors"
         >
