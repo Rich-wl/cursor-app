@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { TopBannerAd, TopBannerSpacer, SidebarAd } from './components/Advertisements'
+import { TopBannerAd, TopBannerSpacer, SidebarAd, LycheeSidebarAd, LycheeTopBannerAd } from './components/Advertisements'
 import { siteConfig } from "../config/site";
 import Script from 'next/script'
 
@@ -81,6 +81,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {/* 固定顶部横幅广告 */}
         <TopBannerAd />
+        <LycheeTopBannerAd />
         <div className="flex min-h-screen flex-col">
           {/* 横幅占位符 */}
           <TopBannerSpacer />
@@ -91,6 +92,7 @@ export default function RootLayout({
 
         {/* 侧边栏广告 */}
         <SidebarAd />
+        <LycheeSidebarAd />
 
         {/* ========== 原左侧广告容器（已由全局 SidebarAd 替代） ==========
         <div className="hidden lg:block fixed left-0 top-1/2 transform -translate-y-1/2 z-10">

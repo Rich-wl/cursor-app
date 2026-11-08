@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { TopBannerAd, TopBannerSpacer, SidebarAd } from './components/Advertisements'
+import { TopBannerAd, TopBannerSpacer, SidebarAd, LycheeSidebarAd, LycheeTopBannerAd } from './components/Advertisements'
 import { siteConfig } from "../config/site";
 import Script from 'next/script'
 
@@ -76,6 +76,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <TopBannerAd />
+        <LycheeTopBannerAd />
         <div className="flex min-h-screen flex-col">
           <TopBannerSpacer />
           <Header />
@@ -83,6 +84,7 @@ export default function RootLayout({
           <Footer />
         </div>
         <SidebarAd />
+        <LycheeSidebarAd />
       </body>
     </html>
   )

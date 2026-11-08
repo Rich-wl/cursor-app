@@ -215,7 +215,7 @@ export function TopBannerAd() {
 
 // 横幅占位符 - 防止内容被固定横幅遮挡
 export function TopBannerSpacer() {
-  return <div className="h-11" />
+  return <div className="h-[5.5rem]" />
 }
 
 // ============================================
@@ -289,4 +289,87 @@ export function SidebarAd() {
   )
 }
 
+// ============================================
+// 右侧边栏广告 (Lychee API，与左侧 SidebarAd 对称)
+// ============================================
+export function LycheeSidebarAd() {
+  useEffect(() => {
+    trackAdEvent('view', 'Lychee API', 'sidebar_right');
+  }, []);
 
+  const handleClick = () => {
+    trackAdEvent('click', 'Lychee API', 'sidebar_right');
+  };
+
+  return (
+    <div className="hidden xl:block fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
+      <a
+        href="https://lycheeapi.com/register?aff=9E8BMNNM&utm_source=cursorhistory&utm_medium=sidebar&utm_campaign=es"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+        className="block w-[160px] bg-gradient-to-b from-rose-500 via-pink-500 to-violet-600 hover:from-rose-600 hover:via-pink-600 hover:to-violet-700 rounded-md shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+      >
+        <div className="p-4 flex flex-col items-center text-center">
+          <img
+            src="/lychee-logo.png"
+            alt="Lychee API"
+            className="h-16 w-16 object-contain rounded-lg mb-3 bg-white/90 p-1"
+          />
+          <h3 className="text-white font-bold text-lg mb-2">Lychee API</h3>
+          <div className="w-12 h-0.5 bg-white/30 mb-3"></div>
+          <p className="text-white/90 text-xs leading-relaxed mb-2">
+            Planes de<br />
+            suscripción Codex
+          </p>
+          <p className="text-white/80 text-xs leading-relaxed mb-3">
+            Pago mensual<br />
+            Claude · GPT por uso
+          </p>
+          <span className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-white text-sm font-medium transition-colors">
+            Ver planes →
+          </span>
+        </div>
+      </a>
+    </div>
+  )
+}
+
+// ============================================
+// 第二条顶部横幅 (Lychee API，固定在 X-Code 横幅正下方，同高 44px)
+// ============================================
+export function LycheeTopBannerAd() {
+  useEffect(() => {
+    trackAdEvent('view', 'Lychee API', 'top_banner');
+  }, []);
+
+  const handleClick = () => {
+    trackAdEvent('click', 'Lychee API', 'top_banner');
+  };
+
+  return (
+    <a
+      href="https://lycheeapi.com/register?aff=9E8BMNNM&utm_source=cursorhistory&utm_medium=top_banner&utm_campaign=es"
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={handleClick}
+      className="fixed top-11 left-0 right-0 z-[60] block w-full h-11 bg-gradient-to-r from-rose-500 via-pink-500 to-violet-600 hover:from-rose-600 hover:via-pink-600 hover:to-violet-700 transition-all duration-300"
+    >
+      <div className="container mx-auto px-4 h-full flex items-center justify-center gap-3">
+        <img
+          src="/lychee-logo.png"
+          alt="Lychee API"
+          className="h-7 w-7 object-contain rounded-md bg-white/90 p-0.5"
+        />
+        <div className="flex items-center gap-2 text-white">
+          <span className="font-semibold text-sm md:text-base">Lychee API</span>
+          <span className="hidden sm:inline text-white/80 text-sm">|</span>
+          <span className="hidden sm:inline text-white/90 text-sm">Planes de suscripción Codex, pago mensual · Claude y GPT pago por uso</span>
+        </div>
+        <span className="ml-2 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-full text-white text-xs font-medium transition-colors">
+          Ver planes →
+        </span>
+      </div>
+    </a>
+  )
+}
