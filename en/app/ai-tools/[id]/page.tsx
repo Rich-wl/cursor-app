@@ -245,6 +245,13 @@ Key advantages of Bolt include:
   }
 }
 
+// Static export: pre-render one page per tool, anything else is a 404
+export const dynamicParams = false
+
+export function generateStaticParams() {
+  return Object.keys(toolDetails).map((id) => ({ id }))
+}
+
 export default function ToolDetail({ params }: { params: { id: string } }) {
   const tool = toolDetails[params.id as keyof typeof toolDetails]
   
