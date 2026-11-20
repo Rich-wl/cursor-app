@@ -197,7 +197,7 @@ export default function AboutUs() {
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">Disclaimer</h2>
             <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
               <p className="text-gray-700 text-sm">
-                <strong>Important:</strong> Cursor Historical Version Download is an independent service and is not officially affiliated with Anysphere, Inc. or the Cursor editor development team. We provide access to publicly available software versions for educational and compatibility purposes. All trademarks and software remain the property of their respective owners.
+                <strong>Important:</strong> Cursor Historical Version Download is an independent service and is not affiliated with Anysphere, Inc. or the Cursor editor development team. We provide access to publicly available software versions for educational and compatibility purposes. All trademarks and software remain the property of their respective owners.
               </p>
             </div>
           </section>

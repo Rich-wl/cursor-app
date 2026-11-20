@@ -22,7 +22,7 @@ export default function Footer() {
               Your trusted source for Cursor editor historical versions. Download any version of the AI-powered code editor for Windows, macOS, and Linux platforms.
             </p>
             <p className="text-gray-400 text-sm">
-              This website is an independent service and is not officially affiliated with Anysphere, Inc. or the Cursor editor development team.
+              This website is an independent service and is not affiliated with Anysphere, Inc. or the Cursor editor development team.
             </p>
           </div>
 
@@ -100,7 +100,7 @@ export default function Footer() {
                 rel="noopener noreferrer" 
                 className="hover:text-white transition-colors duration-200"
               >
-                Official Cursor Website
+                Cursor Website
               </a>
             </div>
           </div>

@@ -55,7 +55,7 @@ export default function InstallationGuide() {
           <section id="windows-installation">
             <h2 className="text-2xl font-bold mb-4">Windows Installation</h2>
             <ol className="list-decimal pl-6 mb-4">
-              <li className="mb-2">Download the latest Windows installer from the official website</li>
+              <li className="mb-2">Download the latest Windows installer from the Cursor website</li>
               <li className="mb-2">Run the downloaded .exe file</li>
               <li className="mb-2">Follow the installation wizard&apos;s instructions</li>
               <li className="mb-2">Choose your installation directory (default recommended)</li>

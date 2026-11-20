@@ -198,6 +198,6 @@ export async function generateDownloadUrl(
 	platform: Platform
 ): Promise<string> {
 	const fileName = await generateFileName(version, platform)
-	// 使用 Cursor 官方下载链接
+	// 使用 Cursor 的下载链接
 	return `https://download.cursor.sh/${fileName}`
 }

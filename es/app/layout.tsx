@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   },
   description: 'Descarga de versiones históricas de Cursor, descarga la última versión de Cursor, una herramienta de programación inteligente basada en IA, compatible con plataformas Windows, macOS y Linux',
   keywords: ['Cursor', 'Descarga de versiones históricas de Cursor', 'herramientas de programación', 'programación con IA', 'editor de código', 'herramientas de desarrollo'],
-  authors: [{ name: 'Cursor' }],
-  creator: 'Cursor',
-  publisher: 'Cursor',
+  authors: [{ name: 'Cursor History Team' }],
+  creator: 'Cursor History',
+  publisher: 'Cursor History',
   openGraph: {
     title: 'Descarga de versiones históricas de Cursor',
     description: 'Descarga la última versión de Cursor, una herramienta de programación inteligente basada en IA, compatible con plataformas Windows, macOS y Linux',

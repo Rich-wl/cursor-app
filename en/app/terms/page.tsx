@@ -68,7 +68,7 @@ export default function TermsOfService() {
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-700">
               <li>You are responsible for verifying the authenticity and safety of downloaded files</li>
-              <li>You will use the software in accordance with Cursor&apos;s official license terms</li>
+              <li>You will use the software in accordance with Cursor&apos;s license terms</li>
               <li>You understand that older versions may have security vulnerabilities</li>
               <li>You will not redistribute the software without proper authorization</li>
             </ul>
@@ -116,7 +116,7 @@ export default function TermsOfService() {
               Our website may contain links to third-party websites or services, including:
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-700">
-              <li>Official Cursor website and documentation</li>
+              <li>The Cursor website and documentation</li>
               <li>GitHub repositories and source code</li>
               <li>Community forums and discussion platforms</li>
               <li>Educational resources and tutorials</li>

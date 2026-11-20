@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   },
   description: 'Cursor 履歴バージョンダウンロード、Cursorの最新バージョンをダウンロード、AIベースのスマートプログラミングツール、Windows、macOSおよびLinuxプラットフォーム対応',
   keywords: ['Cursor', 'Cursor 履歴バージョンダウンロード', 'プログラミングツール', 'AIプログラミング', 'コードエディター', '開発ツール'],
-  authors: [{ name: 'Cursor' }],
-  creator: 'Cursor',
-  publisher: 'Cursor',
+  authors: [{ name: 'Cursor History Team' }],
+  creator: 'Cursor History',
+  publisher: 'Cursor History',
   openGraph: {
     title: 'Cursor 履歴バージョンダウンロード',
     description: 'Cursorの最新バージョンをダウンロード、AIベースのスマートプログラミングツール、Windows、macOSおよびLinuxプラットフォーム対応',

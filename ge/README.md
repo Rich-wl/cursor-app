@@ -1,6 +1,6 @@
 # Cursor 历史版本下载网站
 
-这是一个用于下载 Cursor 历史版本的官方网站。用户可以浏览和下载不同平台（Windows、macOS、Linux）的各个历史版本。
+这是一个用于下载 Cursor 历史版本的网站。用户可以浏览和下载不同平台（Windows、macOS、Linux）的各个历史版本。
 
 ## 功能特点
 

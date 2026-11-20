@@ -2,7 +2,7 @@ import { Platform } from '@/lib/types'
 
 export const siteConfig = {
 	name: 'Cursor Historische Versionen Download',
-	description: 'Offizielle deutsche Seite für Cursor historische Versionen Download. Laden Sie einfach alle Versionen der Cursor IDE herunter, inklusive Windows, macOS und Linux.',
+	description: 'Unabhängige deutsche Seite für Cursor historische Versionen Download. Laden Sie einfach alle Versionen der Cursor IDE herunter, inklusive Windows, macOS und Linux.',
 	url: 'https://ge.cursorhistory.com/',
 	ogImage: 'https://cursor-history.vercel.app/og.jpg',
 	creator: 'Cursor Historische Versionen Download'

@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   },
   description: 'Cursor 历史版本下载，下载Cursor最新版本，一款基于AI的智能编程工具，支持Windows、macOS和Linux平台',
   keywords: ['Cursor', 'Cursor 历史版本下载', '编程工具', 'AI编程', '代码编辑器', '开发工具'],
-  authors: [{ name: 'Cursor' }],
-  creator: 'Cursor',
-  publisher: 'Cursor',
+  authors: [{ name: 'Cursor History Team' }],
+  creator: 'Cursor History',
+  publisher: 'Cursor History',
   openGraph: {
     title: 'Cursor  历史版本下载',
     description: '下载Cursor最新版本，一款基于AI的智能编程工具，支持Windows、macOS和Linux平台',

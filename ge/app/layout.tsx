@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   },
   description: 'Cursor Historische Versionen Download, laden Sie die neueste Cursor-Version herunter, ein KI-basiertes intelligentes Programmiertool, das Windows-, macOS- und Linux-Plattformen unterstützt',
   keywords: ['Cursor', 'Cursor Historische Versionen Download', 'Programmierungstools', 'AI-Programmierung', 'Code-Editor', 'Entwicklungstools'],
-  authors: [{ name: 'Cursor' }],
-  creator: 'Cursor',
-  publisher: 'Cursor',
+  authors: [{ name: 'Cursor History Team' }],
+  creator: 'Cursor History',
+  publisher: 'Cursor History',
   openGraph: {
     title: 'Cursor Historische Versionen Download',
-    description: 'Offizielle deutsche Seite für Cursor historische Versionen Download. Laden Sie einfach alle Versionen der Cursor IDE herunter.',
+    description: 'Unabhängige deutsche Seite für Cursor historische Versionen Download. Laden Sie einfach alle Versionen der Cursor IDE herunter.',
     url: 'https://ge.cursorhistory.com',
     siteName: 'Cursor Historische Versionen Download',
     images: [
