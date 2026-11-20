@@ -3,5 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://ge.cursorhistory.com/api/sitemap
-Sitemap: https://ge.cursorhistory.com/sitemap.xml 
+Sitemap: https://ge.cursorhistory.com/sitemap.xml

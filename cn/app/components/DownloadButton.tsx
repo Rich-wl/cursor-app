@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Platform } from '../../lib/types';
 import { platformLabels } from '../../config/site';
+import { buildDownloadUrl } from '../lib/download';
 
 interface DownloadButtonProps {
   version: string;
@@ -21,8 +22,8 @@ export default function DownloadButton({
     try {
       setIsDownloading(true);
 
-      // 重定向到下载 API
-      window.location.href = `/api/download/${version}/${platform}`;
+      // 静态站点没有下载 API，直接跳转到下载地址
+      window.location.href = buildDownloadUrl(version, platform);
 
       // 模拟下载延迟
       setTimeout(() => {

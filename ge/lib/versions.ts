@@ -1,5 +1,3 @@
-'use server';
-
 import { Version, Platform, CursorVersionsData, VersionHistory } from './types'
 import { platformExtensions } from '../config/site'
 import fs from 'node:fs'
